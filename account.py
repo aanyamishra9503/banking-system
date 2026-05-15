@@ -7,3 +7,4 @@ def create_account():
     name = input("Enter name: ")
     pin = input("Enter PIN: ")
     balance = float(input("Enter initial balance: "))
+    money-withd= int(input("enter money to be withdrawn"))
