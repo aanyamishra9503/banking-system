@@ -8,3 +8,14 @@ def create_account():
     pin = input("Enter PIN: ")
     balance = float(input("Enter initial balance: "))
     money-withd= int(input("enter money to be withdrawn"))
+
+def get_accout_details():
+    name = input("Enter full name: ")
+    age = int(input("Enter age: "))
+    phone = input("Enter phone number: ")
+    email = input("Enter email: ")
+    address = input("Enter address: ")
+    account_type = input("Savings or Current: ")
+    deposit = float(input("Initial deposit: "))
+    username = input("Create username: ")
+    pin = input("Create 4-digit PIN: ")
