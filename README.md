@@ -2,7 +2,16 @@
 A simple command-line banking system built using Python and SQL.
 This project allows users to create accounts, log in securely, deposit and withdraw money, check balances, and view transaction history through a terminal-based interface.
 
-## Technologies Used
+## The project was built to practice:
+
+- Python programming
+- SQL database handling
+- Modular project structuring
+- Authentication systems
+- File organization
+- Real-world CRUD operations
+
+## Techn Stack
 - Python
 - MySQL / SQLite
 - SQL
