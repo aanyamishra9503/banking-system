@@ -1,6 +1,6 @@
 # banking-system
 A simple command-line banking system built using Python and SQL.
-This project allows users to create accounts, log in securely, deposit and withdraw money, check balances, and view transaction history through a terminal-based interface.
+This project is an ongoing project
 
 ## The project was built to practice:
 
