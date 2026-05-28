@@ -6,8 +6,8 @@
 def create_account():
     name = input("Enter name: ")
     pin = input("Enter PIN: ")
-    balance = float(input("Enter initial balance(enter if no balance yet): "))
-    money-withd= int(input("enter money to be withdrawn(enter if no money to be withdrawn): "))
+    balance = float(input("Enter initial balance: "))
+    money-withd= int(input("enter money to be withdrawn: "))
 
 def get_accout_details():
     name = input("Enter full name: ")
@@ -17,5 +17,5 @@ def get_accout_details():
     address = input("Enter your full address: ")
     account_type = input("Savings or Current: ")
     deposit = float(input("Initial deposit: "))
-    username = input("Create username(must contain alpha numeric characters): ")
+    username = input("Create username: ")
     pin = input("Create 4-digit PIN: ")
