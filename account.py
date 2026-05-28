@@ -17,5 +17,5 @@ def get_accout_details():
     address = input("Enter your full address: ")
     account_type = input("Savings or Current: ")
     deposit = float(input("Initial deposit: "))
-    username = input("Create username: ")
+    username = input("Create username(must contain alpha numeric characters): ")
     pin = input("Create 4-digit PIN: ")
