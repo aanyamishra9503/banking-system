@@ -1,6 +1,6 @@
 # banking-system
-A simple command-line banking system built using Python and SQL.
-This project is an ongoing project
+A simple command-line banking system
+built using python
 
 ## The project was built to practice:
 
