@@ -1,6 +1,5 @@
 # banking-system
 A simple command-line banking system
-built using python
 
 ## The project was built to practice:
 
