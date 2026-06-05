@@ -8,13 +8,14 @@ cur.execute("""CREATE DATABASE IF NOT EXISTS bankingsystem;""")
 cur.execute("""USE bankingsystem;""")
 cur.execute("""
 CREATE TABLE accounts(
-    account-id INT AUTO_INCREMEMT PRIMARY KEY,
+    account_id INT AUTO_INCREMEMT PRIMARY KEY,
+    username VARCHAR(25) NOT NULL,
     fullname VARCHAR(25) NOT NULL,
-    email VARCHAR(25) UNIQUE,
-    phone INT UNIQUE,
+    email VARCHAR(50) UNIQUE,
+    phone BIGINT UNIQUE,
     passkey VARCHAR(255) NOT NULL,
     balance DECIMAL (12,2) DEFAULT 0.00,
-    created-at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 """)
 cur.execute("""
 CREATE TABLE transactions (
