@@ -1,7 +1,7 @@
 import hashlib
 from datetime import datetime
 from databasebank import db, cur
-from utils import generate_acc_no
+from utils import validate_phone, validate_email
 
 current_user = None        # stores user_id after login
 current_username = None    # stores username after login

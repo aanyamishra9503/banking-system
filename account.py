@@ -3,11 +3,13 @@
 #check_balance()
 #update_balance()
 #delete_account()
+from utils import format_currency
+
 def create_account():
     name = input("Enter name: ")
     pin = input("Enter PIN: ")
     balance = float(input("Enter initial balance: "))
-    money-withd= int(input("enter money to be withdrawn"))
+    money_withd= int(input("enter money to be withdrawn"))
 
 def get_accout_details():
     name = input("Enter full name: ")
