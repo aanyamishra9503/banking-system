@@ -19,7 +19,7 @@ def register():
         print("username cannot be empty")
         return
     
-    cur.execute("SELECT account_id FROM accounts WHERE username= %S",(username,))
+    cur.execute("SELECT account_id FROM accounts WHERE username= %s",(username,))
     if cur.fetchone():
         print("username already taken, please try again.")
         return
@@ -33,7 +33,7 @@ def register():
     if not email:
         print("email cannot be empty")
         return
-    cur.execute("SELECT account_id FROM accounts WHERE email=%S ",(email,))
+    cur.execute("SELECT account_id FROM accounts WHERE email=%s ",(email,))
     if cur.fetchone():
         print("email already registered, please try again.")
         return
@@ -46,12 +46,12 @@ def register():
         print("password must be 8 characters long.")
         return
     hashed= hash_password(password)
-    cur.execute("""INSERT INTO accounts (username, fullname,email,phone,passkey,balance) VALUES (%S,%S,%S,%S,%S,0.00)""",(username, fullname,email,phone,hashed))
+    cur.execute("""INSERT INTO accounts (username, fullname,email,phone,passkey,balance) VALUES (%s,%s,%s,%s,%s,0.00)""",(username, fullname,email,phone,hashed))
 
     db.commit()
 
     #now show final recorded details
-    cur.execute("SELECT account_id FROM accounts WHERE username= %S",(username,))
+    cur.execute("SELECT account_id FROM accounts WHERE username= %s",(username,))
     account_id= cur.fetchone()[0]
     print("your account ID is: ", account_id)
     print("please login to continue.")
@@ -61,7 +61,7 @@ def login():
     username= input("enter your username: ").strip()
     password= input("enter you password: ").strip()
     hashed = hash_password(password)
-    cur.execute("SELECT account_id, username FROM accounts WHERE username= %S AND passkey=%S",(username,hashed))
+    cur.execute("SELECT account_id, username FROM accounts WHERE username= %s AND passkey=%s",(username,hashed))
     user=cur.fetchone()
 
 
@@ -92,7 +92,7 @@ def change_password():
     old_pass= input("enter your current password: ").strip()
     hashed_old= hash_password(old_pass)
     cur.execute("""SELECT account_id FROM accounts 
-                WHERE account_id= %S AND passkey=%S""",(current_user,hashed_old))
+                WHERE account_id= %s AND passkey=%s""",(current_user,hashed_old))
     if not cur.fetchone():
         print("current password is incorrect.")
         return 
