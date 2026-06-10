@@ -39,29 +39,6 @@ banking-system/
 └── README.md
 ```
 
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone <repository-url>
-cd banking-system
-```
-
-2. Create and configure the database using the provided `schema.sql` file.
-
-3. Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Run the application:
-
-```bash
-python main.py
-```
-
 ## Database
 
 The system uses a relational database to store:
