@@ -2,7 +2,7 @@
 
 A command-line Banking Management System developed using Python and SQL. This project provides a simple simulation of core banking operations such as account creation, user authentication, deposits, withdrawals, balance inquiries, and transaction management through a terminal-based interface.
 
-
+‼️ongoing project‼️
 
 
 ## Features
