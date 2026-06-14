@@ -14,7 +14,7 @@ def deposit():
     cur.execute("SELECT balance FROM accounts WHERE account_id=%s",(current_user,))
     new_balance= cur.fetchone()[0]
     #now log the transaction
-    
+
     cur.execute("""INSERT INTO transactions(account_id, txn_type,amount, balance_after,description)VALUES(%s,%s,%s,%s,%s)""",(current_user, "deposit", enteramount, new_balance, "Deposit"))
 
     db.commit()
