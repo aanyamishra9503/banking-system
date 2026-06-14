@@ -2,8 +2,8 @@
 
 A command-line Banking Management System developed using Python and SQL. This project provides a simple simulation of core banking operations such as account creation, user authentication, deposits, withdrawals, balance inquiries, and transaction management through a terminal-based interface.
 
+‼️ongoing project‼️
 
-‼️it is an ongoing project 
 
 ## Features
 
@@ -37,29 +37,6 @@ banking-system/
 ├── utils.py              # Utility/helper functions
 ├── schema.sql            # Database schema
 └── README.md
-```
-
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone <repository-url>
-cd banking-system
-```
-
-2. Create and configure the database using the provided `schema.sql` file.
-
-3. Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Run the application:
-
-```bash
-python main.py
 ```
 
 ## Database
