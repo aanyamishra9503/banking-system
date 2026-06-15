@@ -6,8 +6,8 @@ cur.execute("""CREATE DATABASE IF NOT EXISTS bankingsystem;""")
 
 cur.execute("""USE bankingsystem;""")
 cur.execute("""
-CREATE TABLE accounts(
-    account_id INT AUTO_INCREMEMT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS accounts(
+    account_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(25) NOT NULL,
     fullname VARCHAR(25) NOT NULL,
     email VARCHAR(50) UNIQUE,
@@ -19,14 +19,14 @@ CREATE TABLE accounts(
 cur.execute("""
 CREATE TABLE transactions (
    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
-   account_no INT,
+   account_id INT,
    transaction_type VARCHAR(20),   
    amount DECIMAL(12,2),
    balance_after DECIMAL (12,2),
    description VARCHAR (100),
    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-   FOREIGN KEY (account_no)
-   REFERENCES accounts(account_no));
+   FOREIGN KEY (account_id)
+   REFERENCES accounts(account_id));
 """)
 # transaction type- deposit / withdraw / transfer
 #balance after transaction
