@@ -1,5 +1,4 @@
 from calendar import month
-
 from auth import logged_or_not,current_user
 from databasebank import cur, db
 import csv
