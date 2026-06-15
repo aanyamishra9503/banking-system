@@ -1,12 +1,12 @@
-from auth import register, login, logout, change_password, is_logged_in, current_username
+from auth import register, login, logout, change_password, logged_or_not, current_user
 from transaction import deposit, withdraw, transfer
 from reports import transaction_history, monthly_summary, generate_summary
 from databasebank import cur,db
 import auth
 
 while True:
-    if not auth.is_logged_in():
-        print("\n--- Banking System ---")
+    if not auth.logged_or_not():
+        print("\nBanking System ")
         print("1. Register")
         print("2. Login")
         print("3. Exit")
