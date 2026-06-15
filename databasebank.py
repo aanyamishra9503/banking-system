@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS accounts(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 """)
 cur.execute("""
-CREATE TABLE transactions (
+CREATE TABLE IF NOT EXISTS transactions (
    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
    account_id INT,
    transaction_type VARCHAR(20),   

@@ -24,7 +24,7 @@ def register():
         print("username already taken, please try again.")
         return
     
-    fullname= input("Enter full name: ").strip
+    fullname= input("Enter full name: ").strip()
     if not fullname:
         print("full name cannot be empty")
         return
@@ -37,7 +37,7 @@ def register():
     if cur.fetchone():
         print("email already registered, please try again.")
         return
-    phone= int(input("enter your phone number: ")).strip()
+    phone= input("enter your phone number: ").strip()
     if not phone.isdigit() or len(phone)!=10:
         print("invalid phone number, must be 10 digits.")
         return
