@@ -1,6 +1,5 @@
 import mysql.connector as sql
-
-db= sql.connect(host="localhost", user="root", password="my25sqlroot2008R", database="society")
+db = sql.connect(host="localhost", user="root", password="my25sqlroot2008R", database="banking")
 cur= db.cursor()
 
 cur.execute("""CREATE DATABASE IF NOT EXISTS bankingsystem;""")
