@@ -42,7 +42,7 @@ def register():
         print("invalid phone number, must be 10 digits.")
         return
     password = input("enter your password: ").strip()
-    if len(password)<8:
+    if len(password)<6:
         print("password must be 8 characters long.")
         return
     hashed= hash_password(password)
