@@ -6,7 +6,7 @@ import auth
 
 while True:
     if not auth.logged_or_not():
-        print("\nBanking System ")
+        print("\n Banking System ")
         print("1. Register")
         print("2. Login")
         print("3. Exit")
