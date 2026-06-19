@@ -12,7 +12,7 @@ def deposit():
     enteramount= float(enteramount)
     cur.execute("UPDATE accounts SET balance = balance+ %s WHERE account_id=%s",(enteramount,auth.current_user))
     cur.execute("SELECT balance FROM accounts WHERE account_id=%s",(auth.current_user,))
-    new_balance= cur.fetchone()[0]
+    new_balance= float(cur.fetchone()[0])
     #now log the transaction
 
     cur.execute("""INSERT INTO transactions(account_id, transaction_type,amount, balance_after,description)VALUES(%s,%s,%s,%s,%s)""",(auth.current_user, "deposit", enteramount, new_balance, "Deposit"))
@@ -30,7 +30,7 @@ def withdraw():
         return
     enterwithdraw_amount= float(enterwithdraw_amount)
     cur.execute("SELECT balance FROM accounts WHERE account_id= %s",(auth.current_user,))
-    cur_balance= cur.fetchone()[0]
+    cur_balance= float(cur.fetchone()[0])
     print("current balance: ",cur_balance)
     if cur_balance < enterwithdraw_amount:   
         print("insufficient balance ,can't withdraw money.")
@@ -42,7 +42,7 @@ def withdraw():
     cur.execute("UPDATE accounts SET balance= balance- %s WHERE account_id=%s",(enterwithdraw_amount,auth.current_user))
     db.commit()
     cur.execute("SELECT balance FROM accounts WHERE account_id=%s",(auth.current_user,))
-    new_balance= cur.fetchone()[0]
+    new_balance= float((cur.fetchone()[0]))
     cur.execute("""INSERT INTO transactions(account_id, transaction_type,amount, balance_after,description)VALUES(%s,%s,%s,%s,%s)""",(auth.current_user, "withdraw", enterwithdraw_amount, new_balance, "withdrawal"))
 
     db.commit()
@@ -72,7 +72,7 @@ def transfer():
     send_amount=float(send_amount)
 
     cur.execute("SELECT balance FROM accounts WHERE account_id=%s",(auth.current_user,))
-    cur_balance= cur.fetchone()[0]
+    cur_balance= float(cur.fetchone()[0])
     if cur_balance < send_amount:
         print("Insufficient balance, can't transfer money.")
         return
