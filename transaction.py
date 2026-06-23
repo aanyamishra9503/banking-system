@@ -43,6 +43,7 @@ def withdraw():
     db.commit()
     cur.execute("SELECT balance FROM accounts WHERE account_id=%s",(auth.current_user,))
     new_balance= float((cur.fetchone()[0]))
+
     cur.execute("""INSERT INTO transactions(account_id, transaction_type,amount, balance_after,description)VALUES(%s,%s,%s,%s,%s)""",(auth.current_user, "withdraw", enterwithdraw_amount, new_balance, "withdrawal"))
 
     db.commit()
@@ -98,8 +99,6 @@ def transfer():
     except Exception as e:
         db.rollback()       #undoes everything if anything goes wrong
         print("Transfer failed! Please try again.")
-
-
 
 
 
