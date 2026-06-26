@@ -3,7 +3,6 @@ from transaction import deposit, withdraw, transfer
 from reports import transaction_history, monthly_summary, generate_summary
 from databasebank import cur,db
 import auth
-print("Welcome user")
 while True:
     if not auth.logged_or_not():
         print("\n Banking System ")
