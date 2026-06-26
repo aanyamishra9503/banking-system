@@ -20,7 +20,7 @@ cur.execute("""
 CREATE TABLE IF NOT EXISTS transactions (
    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
    account_id INT,
-   transaction_type VARCHAR(20),   
+   transaction_type VARCHAR(40),   
    amount DECIMAL(12,2),
    balance_after DECIMAL (12,2),
    description VARCHAR (100),
