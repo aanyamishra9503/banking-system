@@ -4,6 +4,8 @@ from reports import transaction_history, monthly_summary, generate_summary
 from databasebank import cur,db
 import auth
 print("CLI Banking system: ")
+print("Choose an option from below: ")
+
 
 while True:
     if not auth.logged_or_not():
