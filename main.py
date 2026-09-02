@@ -1,3 +1,6 @@
+from secrets import choice
+
+from BANKING_SYS.utils import format_currency
 from auth import register, login, logout, change_password, logged_or_not, current_user
 from transaction import deposit, withdraw, transfer
 from reports import transaction_history, monthly_summary, generate_summary
@@ -5,7 +8,6 @@ from databasebank import cur,db
 import auth
 print("CLI Banking system: ")
 print("Choose an option from below: ")
-
 
 while True:
     if not auth.logged_or_not():
@@ -49,7 +51,10 @@ while True:
         elif ch == "3":
             withdraw()
         elif ch == "4":
-            transfer()
+            new_balance = transfer()
+
+            if new_balance is not None:
+                print("New balance:", format_currency(new_balance))
         elif ch == "5":
             transaction_history()
         elif ch == "6":

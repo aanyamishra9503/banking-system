@@ -93,8 +93,7 @@ def transfer():
             (receiver_id, "transfer", send_amount, receiver_new_balance, f"Transfer from account {auth.current_user}"))
         db.commit()
         print("transaction successful.")
-        new_balance= format_currency(sender_new_balance)
-        print("New balance: ",new_balance)
+        return sender_new_balance
     except Exception as e:
         db.rollback()       #undoes everything if anything goes wrong
         print("Transfer failed! Please try again.")
