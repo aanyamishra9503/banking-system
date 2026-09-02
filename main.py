@@ -1,6 +1,6 @@
 from secrets import choice
 
-from BANKING_SYS.utils import format_currency
+from utils import format_currency
 from auth import register, login, logout, change_password, logged_or_not, current_user
 from transaction import deposit, withdraw, transfer
 from reports import transaction_history, monthly_summary, generate_summary

@@ -3,40 +3,101 @@ import auth
 from databasebank import cur, db
 import csv
 def transaction_history():
+
     if not auth.logged_or_not():
         print("login first.")
         return
-    cur.execute("SELECT * FROM transactions WHERE account_id=%s",(auth.current_user,),)
-    show_all= cur.fetchall()
+
+    cur.execute(
+        "SELECT * FROM transactions WHERE account_id=%s",
+        (auth.current_user,)
+    )
+
+    show_all = cur.fetchall()
+
     if not show_all:
         print("No transactions found.")
         return
+
+    print("\nTransaction History")
+    print("-" * 90)
+
     for i in show_all:
-        print(i)
+        transaction_id, account_id, transaction_type, amount, balance_after, description, transaction_date = i
+
+        print(
+            f"{transaction_date.strftime('%d-%m-%Y %I:%M %p')} | "
+            f"{transaction_type.title():<10} | "
+            f"₹{amount:,.2f} | "
+            f"Balance: ₹{balance_after:,.2f} | "
+            f"{description}"
+        )
+
+    print("-" * 90)
 
 def monthly_summary():
     if not auth.logged_or_not():
         print("login first.")
         return
+
     month = input("Enter month (1-12): ").strip()
     year = input("Enter year (e.g. 2025): ").strip()
 
-    if not month.isdigit() or not year.isdigit(): #txn_date= 2026-06-15 10:30:00
+    if not month.isdigit() or not year.isdigit():
         print("Invalid input!")
         return
-    cur.execute("SELECT * FROM transactions WHERE MONTH(transaction_date)= %s AND YEAR (transaction_date)= %s AND account_id=%s",(month,year,auth.current_user)) 
-    rows= cur.fetchall()
+
+    cur.execute(
+        "SELECT * FROM transactions WHERE MONTH(transaction_date)= %s AND YEAR(transaction_date)= %s AND account_id=%s",
+        (month, year, auth.current_user)
+    )
+
+    rows = cur.fetchall()
+
     if not rows:
         print("No transactions found for the specified month and year.")
         return
+
+    print("\nMonthly Transactions")
+    print("-" * 90)
+
     for r in rows:
-        print(r)
+        transaction_id, account_id, transaction_type, amount, balance_after, description, transaction_date = r
 
-    cur.execute("""SELECT SUM(amount) FROM transactions WHERE transaction_type='deposit' AND MONTH(transaction_date)= %s AND YEAR(transaction_date)= %s AND account_id=%s""",(month,year,auth.current_user,))
-    total_deposits= cur.fetchone()[0] or 0
+        print(
+            f"{transaction_date.strftime('%d-%m-%Y %I:%M %p')} | "
+            f"{transaction_type.title():<10} | "
+            f"₹{amount:,.2f} | "
+            f"Balance: ₹{balance_after:,.2f} | "
+            f"{description}"
+        )
 
-    cur.execute("""SELECT SUM(amount) FROM transactions WHERE transaction_type= 'withdraw' AND MONTH(transaction_date)= %s AND YEAR(transaction_date)= %s AND account_id=%s""",(month,year,auth.current_user,))
-    total_withdrawals= cur.fetchone()[0] or 0
+    print("-" * 90)
+
+    cur.execute(
+        """SELECT SUM(amount)
+        FROM transactions
+        WHERE transaction_type='deposit'
+        AND MONTH(transaction_date)= %s
+        AND YEAR(transaction_date)= %s
+        AND account_id=%s""",
+        (month, year, auth.current_user)
+    )
+
+    total_deposits = cur.fetchone()[0] or 0
+
+    cur.execute(
+        """SELECT SUM(amount)
+        FROM transactions
+        WHERE transaction_type='withdraw'
+        AND MONTH(transaction_date)= %s
+        AND YEAR(transaction_date)= %s
+        AND account_id=%s""",
+        (month, year, auth.current_user)
+    )
+
+    total_withdrawals = cur.fetchone()[0] or 0
+
     print("\nTotal Deposited:", total_deposits)
     print("Total Withdrawn:", total_withdrawals)
 
