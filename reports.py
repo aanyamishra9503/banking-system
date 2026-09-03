@@ -65,7 +65,7 @@ def monthly_summary():
         transaction_id, account_id, transaction_type, amount, balance_after, description, transaction_date = r
 
         print(
-            f"{transaction_date.strftime('%d-%m-%Y %I:%M %p')} | "
+            f"{transaction_date.strftime} | "
             f"{transaction_type.title():<10} | "
             f"₹{amount:,.2f} | "
             f"Balance: ₹{balance_after:,.2f} | "
