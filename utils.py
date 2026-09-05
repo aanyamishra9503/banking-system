@@ -15,6 +15,8 @@ def format_currency(amount):
 def validate_phone(phone):
         if not phone.isdigit() or len(phone) != 10:
             print("invalid phone number.")
+            return False
+        return True
 
 def validate_email(email):
     emailcheck= email.split("@")
