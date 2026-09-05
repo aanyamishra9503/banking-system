@@ -10,7 +10,7 @@ def validate_amount(amount):
         return False
 
 def format_currency(amount):
-    print(f"₹ {float(amount):,.2f}")
+    return (f"₹ {float(amount):,.2f}")
 
 def validate_phone(phone):
         if not phone.isdigit() or len(phone) != 10:

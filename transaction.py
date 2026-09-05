@@ -93,6 +93,9 @@ def transfer():
             (receiver_id, "transfer", send_amount, receiver_new_balance, f"Transfer from account {auth.current_user}"))
         db.commit()
         print("transaction successful.")
+
+        print("DEBUG sender_new_balance:", sender_new_balance)
+        
         return sender_new_balance
     except Exception as e:
         db.rollback()       #undoes everything if anything goes wrong
