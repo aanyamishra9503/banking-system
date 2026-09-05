@@ -1,4 +1,5 @@
 from calendar import month
+from BANKING_SYS.utils import format_currency
 import auth
 from databasebank import cur, db
 import csv
@@ -95,11 +96,16 @@ def monthly_summary():
         AND account_id=%s""",
         (month, year, auth.current_user)
     )
-
+    cur.execute(
+        "SELECT balance FROM accounts WHERE account_id=%s",
+    (auth.current_user,)
+    )
+    current_balance = cur.fetchone()[0]
     total_withdrawals = cur.fetchone()[0] or 0
 
-    print("\nTotal Deposited:", total_deposits)
-    print("Total Withdrawn:", total_withdrawals)
+    print("\nTotal Deposited:", format_currency(total_deposits))
+    print("Total Withdrawn:", format_currency(total_withdrawals))
+    print("Current Balance:", format_currency(current_balance))
 
 def generate_summary():
     if not auth.logged_or_not():
